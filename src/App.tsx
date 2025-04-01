@@ -2,11 +2,14 @@ import React from "react";
 import { ThemeProvider, useTheme } from "./contexts/ThemeContext";
 import Header from "./components/layout/Header";
 import TaskList from "./components/tasks/TaskList";
+import { TaskProvider } from "./contexts/TaskContext";
 
 function App() {
   return (
     <ThemeProvider>
-      <AppContent />
+      <TaskProvider>
+        <AppContent />
+      </TaskProvider>
     </ThemeProvider>
   );
 }
