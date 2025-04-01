@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import TaskItem from "./TaskItem";
 import { useTheme } from "../../contexts/ThemeContext";
 import { useTasks } from "../../contexts/TaskContext";
+import TaskStatistics from "./TaskStatistics";
 
 type FilterType = "all" | "active" | "completed";
 
@@ -148,6 +149,7 @@ const TaskList: React.FC = () => {
       <div className="mt-4 text-sm text-gray-500">
         {tasks.filter((t) => !t.completed).length} tasks left to complete
       </div>
+      <TaskStatistics />
     </div>
   );
 };

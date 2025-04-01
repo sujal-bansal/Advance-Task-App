@@ -1,6 +1,7 @@
 import React, {
   createContext,
   ReactNode,
+  useCallback,
   useContext,
   useEffect,
   useReducer,
@@ -75,21 +76,21 @@ export const TaskProvider: React.FC<{ children: ReactNode }> = ({
     localStorage.setItem("tasks", JSON.stringify(state.tasks));
   }, [state.tasks]);
 
-  const addTask = (title: string) => {
+  const addTask = useCallback((title: string) => {
     dispatch({ type: "ADD_TASK", payload: { title } });
-  };
+  }, []);
 
-  const toggleTask = (id: string) => {
+  const toggleTask = useCallback((id: string) => {
     dispatch({ type: "TOGGLE_TASK", payload: { id } });
-  };
+  }, []);
 
-  const deleteTask = (id: string) => {
+  const deleteTask = useCallback((id: string) => {
     dispatch({ type: "DELETE_TASK", payload: { id } });
-  };
+  }, []);
 
-  const updateTask = (id: string, title: string) => {
+  const updateTask = useCallback((id: string, title: string) => {
     dispatch({ type: "UPDATE_TASK", payload: { title, id } });
-  };
+  }, []);
 
   return (
     <TaskContext.Provider
